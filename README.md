@@ -1,4 +1,4 @@
-# Volatility prediction in financial markets
+# Volatility prediction in Financial Markets
 A repository for the CFM's ENS Data Challenge. Further information about this challenge is available at the following [link](https://challengedata.ens.fr/en/challenge/34/volatility_prediction_in_financial_markets.html). The official leaderboard is available at this [address](http://datachallenge.cfm.fr).
 
 ## Table of Contents

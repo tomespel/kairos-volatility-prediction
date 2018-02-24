@@ -22,4 +22,4 @@ The team includes the following members, with the associated GitHub identifiers.
 | --- | --- |
 |Kees Groeneweg|kegror|
 |Mehdi Tomas|mehditomas|
-|Thomas Espel|ddblue75|
+|Thomas Espel|tjespel|

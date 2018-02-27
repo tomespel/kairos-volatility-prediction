@@ -101,7 +101,8 @@ ENV/
 .mypy_cache/
 
 
-
+# UNIX OS
+.DS_STORE
 
 
 # Samples files

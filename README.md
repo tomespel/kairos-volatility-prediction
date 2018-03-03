@@ -15,6 +15,8 @@ We have developed the Kairos package for predicting volatility. Kairos refers to
 
 ## Usage
 
+
+
 ## Contribute and support
 
 The team includes the following members, with the associated GitHub identifiers.

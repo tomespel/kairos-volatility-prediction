@@ -8,3 +8,7 @@
 # Criteria
 high_average_threshold = .42  # To be corrected
 low_average_threshold = .042  # To be corrected
+
+
+def test():
+    return 0

@@ -100,7 +100,6 @@ ENV/
 # mypy
 .mypy_cache/
 
-
 # UNIX OS
 .DS_Store
 

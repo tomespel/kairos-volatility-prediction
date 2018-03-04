@@ -1,7 +1,7 @@
 import pandas as pd
 import random
 
-ratio = 0.1
+ratio = 0.2
 
 raw_input = pd.DataFrame.from_csv('training_input.csv', sep=';')
 # We take 20% of the products, which means 64 out of 318

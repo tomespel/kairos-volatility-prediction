@@ -11,13 +11,20 @@ Kairos refers to an [ancient Greek diety](https://en.wikipedia.org/wiki/Kairos).
 
 ## Features
 
-We have developed the Kairos package for predicting volatility at the end of the day.
+We have developed the Kairos package for predicting volatility at the end of the day. The package has been developed for the `Python 3.7` language. Dependencies are specified in the package itself.
 
 ## Installation
 
 ## Usage
 
+### Input Files
+The input files should be using the `.csv` format and have the following structure. We recommend using `';'` as separator in the file.
 
+|ID|date|product_id|volatility 09:30:00|...|volatility 13:55:00|return 09:30:00|...|return 13:55:00|
+|---|||||||||
+|1|1|1|0.6627|...|0.0523|-1|...|-1|
+|2|1|2|0.2853|...|0.0711|1|...|-1|
+|3|1|3|1.1516|...|0.1179|-1|...|1|
 
 ## Contribute and support
 

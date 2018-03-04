@@ -1,4 +1,4 @@
-# Volatility prediction in Financial Markets
+# Volatility Prediction in Financial Markets
 A repository for the Kairos package developed for CFM's ENS Data Challenge. Further information about this challenge is available at the following [link](https://challengedata.ens.fr/en/challenge/34/volatility_prediction_in_financial_markets.html). The official leaderboard is available at this [address](http://datachallenge.cfm.fr).
 
 ## Table of Contents
@@ -7,9 +7,11 @@ A repository for the Kairos package developed for CFM's ENS Data Challenge. Furt
 Volatility is a fundamental metric in modern finance. In this challenge, we use past volatilities and price changes of financial instruments to predict future volatility and control the risk of financial portfolios.
 Here is [the video](https://www.college-de-france.fr/site/stephane-mallat/Prediction-de-volatilite-de-marches-financiers-par-CFM.htm) of the challenge's presentation at Collège de France.
 
+Kairos refers to an [ancient Greek diety](https://en.wikipedia.org/wiki/Kairos). The word καιρός itself means *opportune moment*. In modern greek, it means the weather.
+
 ## Features
 
-We have developed the Kairos package for predicting volatility. Kairos refers to an [ancient Greek diety](https://en.wikipedia.org/wiki/Kairos). The word καιρός itself means *the opportune moment*.
+We have developed the Kairos package for predicting volatility at the end of the day.
 
 ## Installation
 

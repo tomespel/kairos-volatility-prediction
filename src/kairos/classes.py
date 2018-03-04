@@ -7,26 +7,35 @@
 
 # General elements
 import time  # Generation of timestamps in classes
-classesliststringdates = [time.strftime('%H:%M:%S', time.gmtime(34200 + i*300)) for i in range(53)]
+classesListStringDates = [time.strftime('%H:%M:%S', time.gmtime(34200 + i*300)) for i in range(53)]
 
 
 # KairosDay includes the informations related to a day of volatility
 
 class KairosDay:
 
-    def __rawconversion(self, row):
-        volatility = [row.loc['volatility ' + classesliststringdates[i]] for i in range(len(classesliststringdates))]
-        returns = [row.loc['return ' + classesliststringdates[i]] for i in range(len(classesliststringdates))]
-        returns =[]
+    def __raw_conversion(self, row):
+        volatility = [row['volatility ' + classesListStringDates[i]] for i in range(len(classesListStringDates))]
+        returns = [row['return ' + classesListStringDates[i]] for i in range(len(classesListStringDates))]
         return (int(row['date']), int(row['product_id']), volatility, returns)
 
     def __init__(self, pandasrawline, targetid):
         self.__id = int(targetid)
         (self.__date, self.__asset, self.__volatility,
-            self.__returns) = self.__rawconversion(pandasrawline)
-        self.__isclassified = False
-        self.__localaverageclassification = None
-        self.__classificationdetails = None
+            self.__returns) = self.__raw_conversion(pandasrawline)
+        self.__isClassified = False
+        self.__localClassification = None
+        self.__classificationDetails = None
+        self.__features = dict()
+
+    def get_date(self):
+        return self.__date
+
+    def get_id(self):
+        return self.__id
+
+    def get_asset(self):
+        return self.__asset
 
     def get_volatility(self):
         return self.__volatility
@@ -35,23 +44,33 @@ class KairosDay:
         return self.__returns
 
     def get_classification(self):
-        return self.__localaverageclassification
+        return self.__localClassification
 
     def is_classified(self):
-        return self.__isclassified
+        return self.__isClassified
 
-    def classify(self, classification, probabilitydictionary):
-        self.__isclassified = True
-        self.__localaverageclassification = classification
-        self.__classificationdetails = probabilitydictionary
+    def set_classification(self, classification, probabilityDictionary):
+        self.__isClassified = True
+        self.__localClassification = classification
+        self.__classificationDetails = probabilityDictionary
+
+    def add_features(self, featuresnames, featuresList):
+        self.__features[featuresnames] = featuresList
 
 # KairosAsset handles the KairosDays
 
 
 class KairosAsset:
-    def __init__(self, listkairosdays=[]):
-        self.__dayslist = listkairosdays
+    def __init__(self, listKairosDays=[]):
+        self.__daysList = sorted(listKairosDays, key=KairosDay.get_date)
+        self.__isClassified = False
+        self.__averageClassification = None
+        self.__classificationDetails = None
 
+    def set_classification(self, classification, probabilityDictionary):
+        self.__isClassified = True
+        self.__averageClassification = classification
+        self.__classificationDetails = probabilityDictionary
 
 # A KairosBucket handles several days
 

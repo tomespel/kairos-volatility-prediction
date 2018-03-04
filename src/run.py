@@ -1,21 +1,27 @@
 from kairos import *
+import datetime
+a = datetime.datetime.now()
+test = kairos.input.from_csv('../samples/training_input.min.csv')
+b = datetime.datetime.now()
+print(b-a)
 
+len(test)
+
+test[0].get_date()
+test2=sorted(test, key=kairos.classes.KairosDay.get_date)
+test3 =  kairos.classes.KairosAsset(test)
 
 print(kairos.engine.assetclassifier.test())
 
 import pandas as pd
-data = pd.DataFrame.from_csv('../samples/training_input.min.csv')
-data.head()
-indexes = data.index.tolist()
-testrow = data.loc[indexes[0]]
-import datetime
+
 a = datetime.datetime.now()
-objects = []
-for i in range(len(indexes)):
-    objects.append(kairos.classes.KairosDay(data.loc[indexes[i]], indexes[i]))
+data = pd.DataFrame.from_csv('../samples/training_input.min.csv')
 b = datetime.datetime.now()
-print(len(objects))
+print(len(data))
 print(b-a)
+
+test[0].get_returns()
 
 object1 = kairos.classes.KairosDay(testrow, indexes[0])
 object1.get_volatility()

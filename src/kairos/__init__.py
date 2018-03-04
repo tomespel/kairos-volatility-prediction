@@ -1,3 +1,4 @@
+import kairos.classes
 import kairos.features
 import kairos.engine
 import kairos.input

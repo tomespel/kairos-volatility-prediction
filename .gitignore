@@ -105,6 +105,8 @@ ENV/
 
 
 # Samples files
+/samples
+/samples/*.csv
 testing_input.csv
 training_input.csv
 training_output.csv

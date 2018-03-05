@@ -13,4 +13,8 @@ for day in data[0]:
     plt.plot(day.get_volatility())
 plt.show()
 
+for day in data[0]:
+    plt.plot(day.get_returns())
+plt.show()
+
 kairos.output.freeze(data, '../samples/thomas.min.krf')

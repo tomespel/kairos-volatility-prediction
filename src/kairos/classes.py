@@ -20,16 +20,14 @@ class KairosDay:
     def __raw_conversion(self, row):
         volatility = [self.__string_to_float(row['volatility ' + classesListStringDates[i]]) for i in range(len(classesListStringDates))]
         returns = [self.__string_to_float(row['return ' + classesListStringDates[i]]) for i in range(len(classesListStringDates))]
-        return (int(row['date']), int(row['product_id']), volatility, returns)
+        return (int(row['product_id']), int(row['date']), volatility + returns)
 
     def __init__(self, pandasrawline, targetid):
         self.__id = int(targetid)
-        (self.__date, self.__asset, self.__volatility,
-            self.__returns) = self.__raw_conversion(pandasrawline)
-        self.__isClassified = False
+        (self.__asset, self.__date, self.__features) = self.__raw_conversion(pandasrawline)
+        self.__featuresIndex = dict([('volatility',(0, 53)),('returns', (53, 53))])
         self.__localClassification = None
         self.__classificationDetails = dict()
-        self.__features = dict()
 
     def get_date(self):
         return self.__date
@@ -40,20 +38,32 @@ class KairosDay:
     def get_asset(self):
         return self.__asset
 
+    def get_feature(self, featureName):
+        return self.__features[self.__featuresIndex[featureName][0]:self.__featuresIndex[featureName][0]+self.__featuresIndex[featureName][1]]
+
+    def set_feature(self, featureName, featureValue):
+        if self.__featuresIndex[featureName][1] != len(featureValue):
+            print('Size of feature mismatch in set_feature. Expected ' + self.__featuresIndex[featureName][1] + '.')
+            return 1
+        self.__features[self.__featuresIndex[featureName][0]:self.__featuresIndex[featureName][0]+self.__featuresIndex[featureName][1]] = featureValue
+        return 0
+
+
     def get_volatility(self):
-        return self.__volatility
+        return self.get_feature('volatility')
 
     def get_returns(self):
-        return self.__returns
+        return self.get_feature('returns')
 
     def get_classification(self):
         return self.__localClassification
 
     def is_classified(self):
-        return self.__isClassified
+        if self.__localClassification is not None:
+            return True
+        return False
 
     def set_classification(self, classification, probabilityDictionary):
-        self.__isClassified = True
         self.__localClassification = classification
         self.__classificationDetails = probabilityDictionary
 
@@ -66,12 +76,10 @@ class KairosDay:
 class KairosAsset:
     def __init__(self, listKairosDays=[]):
         self.__daysList = sorted(listKairosDays, key=KairosDay.get_date)
-        self.__isClassified = False
         self.__averageClassification = None
         self.__classificationDetails = None
 
     def set_classification(self, classification, probabilityDictionary):
-        self.__isClassified = True
         self.__averageClassification = classification
         self.__classificationDetails = probabilityDictionary
 

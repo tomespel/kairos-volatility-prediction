@@ -14,9 +14,12 @@ classesListStringDates = [time.strftime('%H:%M:%S', time.gmtime(34200 + i*300)) 
 
 class KairosDay:
 
+    def __string_to_float(self, value):
+        return float(value) if value != '' else None
+
     def __raw_conversion(self, row):
-        volatility = [row['volatility ' + classesListStringDates[i]] for i in range(len(classesListStringDates))]
-        returns = [row['return ' + classesListStringDates[i]] for i in range(len(classesListStringDates))]
+        volatility = [self.__string_to_float(row['volatility ' + classesListStringDates[i]]) for i in range(len(classesListStringDates))]
+        returns = [self.__string_to_float(row['return ' + classesListStringDates[i]]) for i in range(len(classesListStringDates))]
         return (int(row['date']), int(row['product_id']), volatility, returns)
 
     def __init__(self, pandasrawline, targetid):
@@ -25,7 +28,7 @@ class KairosDay:
             self.__returns) = self.__raw_conversion(pandasrawline)
         self.__isClassified = False
         self.__localClassification = None
-        self.__classificationDetails = None
+        self.__classificationDetails = dict()
         self.__features = dict()
 
     def get_date(self):
@@ -71,6 +74,9 @@ class KairosAsset:
         self.__isClassified = True
         self.__averageClassification = classification
         self.__classificationDetails = probabilityDictionary
+
+    def __getitem__(self, day):
+        return self.__daysList[day]
 
 # A KairosBucket handles several days
 

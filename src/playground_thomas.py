@@ -1,26 +1,16 @@
 from kairos import *
-import datetime
-a = datetime.datetime.now()
-test = kairos.input.from_csv('../samples/training_input.min.csv')
-b = datetime.datetime.now()
-print(b-a)
+import matplotlib.pyplot as plt
+#import datetime
 
-len(test)
+#data = kairos.input.from_csv('../samples/training_input.min.csv')
 
-import pandas as pd
+data = kairos.input.release('../samples/thomas.min.krf')
 
-a = datetime.datetime.now()
-data = pd.DataFrame.from_csv('../samples/training_input.min.csv')
-b = datetime.datetime.now()
-print(len(data))
-print(b-a)
+# Do my stuff
+data[0][0]
 
+for day in data[0]:
+    plt.plot(day.get_volatility())
+plt.show()
 
-a = datetime.datetime.now()
-kairos.output.freeze(test, '../samples/training_input.min.krf')
-b = datetime.datetime.now()
-print(b-a)
-a = datetime.datetime.now()
-retrieve = kairos.input.release('../samples/training_input.min.krf')
-b = datetime.datetime.now()
-print(b-a)
+kairos.output.freeze(data, '../samples/thomas.min.krf')

@@ -6,4 +6,4 @@ data = kairos.input.from_csv('../samples/training_input.min.csv')  # When using 
 
 # Do my stuff
 
-kairos.input.freeze(data, '../samples/mehdi.min.krf')
+kairos.output.freeze(data, '../samples/mehdi.min.krf')

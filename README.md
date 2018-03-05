@@ -17,14 +17,45 @@ We have developed the Kairos package for predicting volatility at the end of the
 
 ## Usage
 
+### Loading the package
+
+In order to use the `Kairos` package functions, you must import it in your `Python 3.7` project.
+```
+from kairos import *
+```
+Make sure that all the dependencies are installed. When imported correctly, the package should print the following in the Python console.
+```
+Kairos features provider imported.
+Kairos engine imported.
+Kairos succesfully loaded in your project.
+```
+
 ### Input Files
-The input files should be using the `.csv` format and have the following structure. We recommend using `';'` as separator in the file.
+The input files should be using the `.csv` format and have the following structure. We recommend using `','` as separator in the file.
 
 |ID|date|product_id|volatility 09:30:00|...|volatility 13:55:00|return 09:30:00|...|return 13:55:00|
 |---|---|---|---|---|---|---|---|---|
 |1|1|1|0.6627|...|0.0523|-1|...|-1|
 |2|1|2|0.2853|...|0.0711|1|...|-1|
 |3|1|3|1.1516|...|0.1179|-1|...|1|
+
+In order to import a csv file in Kairos, use the following command.
+```
+myData = kairos.input.from_csv('/csvFilePath/myFile.csv')
+```
+You can specify the csv delimiter by adding the parameter `contentsDelimiter` in the function.
+
+### File system
+Kairos uses a dedicated file system `.krf` to store the data in their current state. In order to store the data, use the following command.
+```
+kairos.output.freeze(myData, '/pathToFile/myFile.krf')
+```
+You can restore the data later on using the following command.
+```
+myData = kairos.input.release('/pathToFile/myFile.krf')
+```
+
+The data is structured in one or several `KairosBucket` objects which include `KairosAsset` objects with similar properties. Each `KairosAsset` includes several `KairosDay` objects.
 
 ## Contribute and support
 

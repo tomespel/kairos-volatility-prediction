@@ -6,6 +6,7 @@
 
 import kairos.classes
 import csv
+import pickle
 
 
 # Utility functions
@@ -27,9 +28,15 @@ def _days_creator(daysList):
 
 # User access
 
+
 def from_csv(pathToFile, contentsDelimiter=','):
     with open(pathToFile, 'r') as inputFile:
         reader = csv.reader(inputFile, delimiter = contentsDelimiter, quotechar="'", quoting=csv.QUOTE_ALL)
         elements = _elements_creator(reader)
         elements = _days_creator(elements)
     return elements
+
+
+def release(pathToFile):
+    fileReader = open(pathToFile, 'rb')
+    return pickle.load(fileReader)

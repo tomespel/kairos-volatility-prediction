@@ -26,6 +26,24 @@ The input files should be using the `.csv` format and have the following structu
 |2|1|2|0.2853|...|0.0711|1|...|-1|
 |3|1|3|1.1516|...|0.1179|-1|...|1|
 
+In order to import a csv file in Kairos, use the following command.
+```
+myData = kairos.input.from_csv('/csvFilePath/myFile.csv')
+```
+You can specify the csv delimiter by adding the parameter `contentsDelimiter` in the function.
+
+### File system
+Kairos uses a dedicated file system `.krf` to store the data in their current state. In order to store the data, use the following command.
+```
+kairos.output.freeze(myData, '/pathToFile/myFile.krf')
+```
+You can restore the data later on using the following command.
+```
+myData = kairos.input.release('/pathToFile/myFile.krf')
+```
+
+The data is structured in one or several `KairosBucket` objects which include `KairosAsset` objects with similar properties. Each `KairosAsset` includes several `KairosDay` objects.
+
 ## Contribute and support
 
 The team includes the following members, with the associated GitHub identifiers.

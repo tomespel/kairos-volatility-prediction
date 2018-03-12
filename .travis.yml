@@ -1,0 +1,11 @@
+language: python
+python:
+  - "3.6"
+install:
+  - pip install -r requirements.txt
+  - pip install codecov
+script:
+  - cd src
+  - pytest
+after_success:
+  - codecov -t d970060e-74b3-43d8-acfa-7cbb568cf852

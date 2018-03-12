@@ -46,4 +46,4 @@ Using the testing_input file, challengers must provide a testing output file in 
 
 Submissions can take up to ten minutes due to the size of the testing output file.
 
-Last but not least, the metric used in this challenge to designate the winning participant will be the mean absolute percentage error (MAPE)[https://en.wikipedia.org/wiki/Mean_absolute_percentage_error].
+Last but not least, the metric used in this challenge to designate the winning participant will be the mean absolute percentage error [MAPE](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error).

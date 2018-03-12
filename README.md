@@ -1,6 +1,10 @@
+<<<<<<< HEAD
 # Volatility Prediction in Financial Markets
 [![Build Status](https://travis-ci.com/tjespel/kairos-volatility-prediction.svg?token=H7bzknKpKUjcDxrX949q&branch=master)](https://travis-ci.com/tjespel/kairos-volatility-prediction) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0
 
+=======
+# Kairos Package: Volatility Prediction in Financial Markets
+>>>>>>> ee7d94c6b272eb825ea53ed4b83f2a0b2687ae90
 A repository for the Kairos package developed for CFM's ENS Data Challenge. Further information about this challenge is available at the following [link](https://challengedata.ens.fr/en/challenge/34/volatility_prediction_in_financial_markets.html). The official leaderboard is available at this [address](http://datachallenge.cfm.fr).
 
 ## Table of Contents

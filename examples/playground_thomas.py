@@ -12,7 +12,6 @@ import matplotlib.pyplot as plt
 data = kairos.input.release('../samples/thomas.min.krf')
 
 # Do my stuff
-data[0][0]
 
 for day in data[0]:
     plt.plot(day.get_volatility())

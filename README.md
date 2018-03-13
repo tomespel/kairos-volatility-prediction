@@ -1,10 +1,6 @@
-<<<<<<< HEAD
 # Volatility Prediction in Financial Markets
-[![Build Status](https://travis-ci.com/tjespel/kairos-volatility-prediction.svg?token=H7bzknKpKUjcDxrX949q&branch=master)](https://travis-ci.com/tjespel/kairos-volatility-prediction) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0
+[![Build Status](https://travis-ci.com/tjespel/kairos-volatility-prediction.svg?token=H7bzknKpKUjcDxrX949q&branch=master)](https://travis-ci.com/tjespel/kairos-volatility-prediction) [![codecov](https://codecov.io/gh/tjespel/kairos-volatility-prediction/branch/master/graph/badge.svg?token=ND0WGgc5Id)](https://codecov.io/gh/tjespel/kairos-volatility-prediction) [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ftjespel%2Fkairos-volatility-prediction.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Ftjespel%2Fkairos-volatility-prediction?ref=badge_shield)
 
-=======
-# Kairos Package: Volatility Prediction in Financial Markets
->>>>>>> ee7d94c6b272eb825ea53ed4b83f2a0b2687ae90
 A repository for the Kairos package developed for CFM's ENS Data Challenge. Further information about this challenge is available at the following [link](https://challengedata.ens.fr/en/challenge/34/volatility_prediction_in_financial_markets.html). The official leaderboard is available at this [address](http://datachallenge.cfm.fr).
 
 ## Table of Contents
@@ -63,7 +59,7 @@ myData = kairos.input.release('/pathToFile/myFile.krf')
 
 The data is structured in one or several `KairosBucket` objects which include `KairosAsset` objects with similar properties. Each `KairosAsset` includes several `KairosDay` objects.
 
-## Contribute and support
+## Credits
 
 The team includes the following members, with the associated GitHub identifiers.
 
@@ -71,3 +67,8 @@ The team includes the following members, with the associated GitHub identifiers.
 | --- | --- |
 |Mehdi Tomas|mehditomas|
 |Thomas Espel|tjespel|
+
+## License
+Apache 2
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Ftjespel%2Fkairos-volatility-prediction.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Ftjespel%2Fkairos-volatility-prediction?ref=badge_large)

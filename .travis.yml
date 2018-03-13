@@ -4,8 +4,8 @@ python:
 install:
   - pip install -r requirements.txt
   - pip install codecov
+  - pip install pytest pytest-cov
 script:
-  - cd src
-  - pytest
-after_success:
+  - cd tests
+  - pytest --cov=./
   - codecov -t d970060e-74b3-43d8-acfa-7cbb568cf852

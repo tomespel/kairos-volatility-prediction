@@ -38,6 +38,9 @@ class KairosDay:
     def get_asset(self):
         return self.__asset
 
+    def get_allFeatures(self):
+        return self.__features
+
     def get_feature(self, featureName):
         return self.__features[self.__featuresIndex[featureName][0]:self.__featuresIndex[featureName][0]+self.__featuresIndex[featureName][1]]
 
@@ -47,7 +50,6 @@ class KairosDay:
             return 1
         self.__features[self.__featuresIndex[featureName][0]:self.__featuresIndex[featureName][0]+self.__featuresIndex[featureName][1]] = featureValue
         return 0
-
 
     def get_volatility(self):
         return self.get_feature('volatility')
@@ -83,6 +85,9 @@ class KairosAsset:
         self.__averageClassification = classification
         self.__classificationDetails = probabilityDictionary
 
+    def get_daysNumber(self):
+        return len(self.__daysList)
+
     def __getitem__(self, day):
         return self.__daysList[day]
 
@@ -92,3 +97,6 @@ class KairosAsset:
 class KairosBucket:
     def __init__(self, listkairosassets=[]):
         self.__assetslist = listkairosassets
+
+    def get_assetsNumber(self):
+        return len(self.__assetsList)

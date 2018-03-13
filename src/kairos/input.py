@@ -11,7 +11,7 @@ import pickle
 
 # Utility functions
 
-def _elements_creator(csvReader):
+def _days_creator(csvReader):
     outputList = []
     indexes = next(csvReader)
     for row in csvReader:
@@ -19,7 +19,7 @@ def _elements_creator(csvReader):
     return outputList
 
 
-def _days_creator(daysList):
+def _assets_creator(daysList):
     tradedAssetsList = list(set([day.get_asset() for day in daysList]))
     assetsList = []
     for tradedAsset in tradedAssetsList:
@@ -32,8 +32,8 @@ def _days_creator(daysList):
 def from_csv(pathToFile, contentsDelimiter=','):
     with open(pathToFile, 'r') as inputFile:
         reader = csv.reader(inputFile, delimiter = contentsDelimiter, quotechar="'", quoting=csv.QUOTE_ALL)
-        elements = _elements_creator(reader)
-        elements = _days_creator(elements)
+        elements = _days_creator(reader)
+        elements = _assets_creator(elements)
     return elements
 
 

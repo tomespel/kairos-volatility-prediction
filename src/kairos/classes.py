@@ -12,6 +12,7 @@ classesListStringDates = [time.strftime('%H:%M:%S', time.gmtime(34200 + i*300)) 
 
 # KairosDay includes the informations related to a day of volatility
 
+
 class KairosDay:
 
     def __string_to_float(self, value):

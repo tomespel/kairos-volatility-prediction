@@ -56,6 +56,9 @@ class KairosDay:
         return 0
 
     def add_feature(self, featureName, featureValue):
+        if featureName in self.__featuresIndex:
+            raise Exception('The feature ' + str(featureName) + ' already exists.')
+            return 1
         begin = len(self.__features)
         self.__features = self.__features + featureValue
         self.__featuresIndex[featureName] = (begin, len(featureValue))

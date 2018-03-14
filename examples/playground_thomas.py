@@ -11,6 +11,12 @@ import matplotlib.pyplot as plt
 
 data = kairos.input.release('../samples/thomas.min.krf')
 
+myRegression = kairos.engine.regressors.linearRegressor()
+
+myRegression.fit([1,2,3,4,5], [-1,-2,-3,-4,-5])
+
+myRegression.predict([5,9,10])
+
 # Do my stuff
 
 for day in data[0]:

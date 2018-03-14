@@ -19,8 +19,8 @@ class linearRegressor:
         sgd = SGD()
         self.__model.compile(optimizer=sgd, loss='mse', metrics=['mse'])
 
-    def fit(self, input, output, shuffling=False):
-        self.__model(input, output, batch_size=1, epochs=30, shuffle=shuffling)
+    def fit(self, modelInput, modelOutput, shuffling=False):
+        self.__model.fit(modelInput, modelOutput, batch_size=1, epochs=30, shuffle=shuffling)
         return 0
 
     def predict(self, data):

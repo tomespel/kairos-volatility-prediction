@@ -43,13 +43,22 @@ class KairosDay:
         return self.__features
 
     def get_feature(self, featureName):
+        if featureName not in self.__featuresIndex:
+            raise Exception('The feature ' + str(featureName) + ' does not exist.')
+            return 1
         return self.__features[self.__featuresIndex[featureName][0]:self.__featuresIndex[featureName][0]+self.__featuresIndex[featureName][1]]
 
     def set_feature(self, featureName, featureValue):
         if self.__featuresIndex[featureName][1] != len(featureValue):
-            print('Size of feature mismatch in set_feature. Expected ' + self.__featuresIndex[featureName][1] + '.')
+            raise Exception('Size of feature mismatch in set_feature. Expected ' + str(self.__featuresIndex[featureName][1]) + '.')
             return 1
         self.__features[self.__featuresIndex[featureName][0]:self.__featuresIndex[featureName][0]+self.__featuresIndex[featureName][1]] = featureValue
+        return 0
+
+    def add_feature(self, featureName, featureValue):
+        begin = len(self.__features)
+        self.__features = self.__features + featureValue
+        self.__featuresIndex[featureName] = (begin, len(featureValue))
         return 0
 
     def get_volatility(self):
@@ -97,7 +106,10 @@ class KairosAsset:
 
 class KairosBucket:
     def __init__(self, listkairosassets=[]):
-        self.__assetslist = listkairosassets
+        self.__assetsList = listkairosassets
 
     def get_assetsNumber(self):
         return len(self.__assetsList)
+
+    def __getitem__(self, asset):
+        return self.__assetsList[asset]

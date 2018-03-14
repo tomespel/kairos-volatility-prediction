@@ -34,7 +34,7 @@ def from_csv(pathToFile, contentsDelimiter=','):
         reader = csv.reader(inputFile, delimiter = contentsDelimiter, quotechar="'", quoting=csv.QUOTE_ALL)
         elements = _days_creator(reader)
         elements = _assets_creator(elements)
-    return elements
+    return kairos.classes.KairosBucket(elements)
 
 
 def release(pathToFile):

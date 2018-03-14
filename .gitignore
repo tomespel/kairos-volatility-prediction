@@ -110,3 +110,4 @@ ENV/
 testing_input.csv
 training_input.csv
 training_output.csv
+/tests/*.krf

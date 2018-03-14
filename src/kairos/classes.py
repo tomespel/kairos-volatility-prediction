@@ -23,12 +23,13 @@ class KairosDay:
         returns = [self.__string_to_float(row['return ' + classesListStringDates[i]]) for i in range(len(classesListStringDates))]
         return (int(row['product_id']), int(row['date']), volatility + returns)
 
-    def __init__(self, pandasrawline, targetid):
+    def __init__(self, pandasrawline, targetid, targetValue=None):
         self.__id = int(targetid)
         (self.__asset, self.__date, self.__features) = self.__raw_conversion(pandasrawline)
         self.__featuresIndex = dict([('volatility',(0, 53)),('returns', (53, 53))])
         self.__localClassification = None
         self.__classificationDetails = dict()
+        self.__targetValue = targetValue
 
     def get_date(self):
         return self.__date
@@ -38,6 +39,9 @@ class KairosDay:
 
     def get_asset(self):
         return self.__asset
+
+    def get_targetValue(self):
+        return self.__targetValue
 
     def get_allFeatures(self):
         return self.__features
@@ -84,6 +88,11 @@ class KairosDay:
 
     def add_features(self, featuresnames, featuresList):
         self.__features[featuresnames] = featuresList
+        return 0
+
+    def set_targetValue(self, targetValue):
+        self.__targetValue = targetValue
+        return 0
 
 # KairosAsset handles the KairosDays
 
@@ -104,6 +113,12 @@ class KairosAsset:
     def __getitem__(self, day):
         return self.__daysList[day]
 
+    def find(self, id):
+        for day in self.__daysList:
+            if day.get_id() == id:
+                return day
+        return None
+
 # A KairosBucket handles several days
 
 
@@ -116,3 +131,9 @@ class KairosBucket:
 
     def __getitem__(self, asset):
         return self.__assetsList[asset]
+
+    def find(self, id):
+        for asset in self.__assetsList:
+            if asset.find(id) is not None:
+                return asset.find(id)
+        return None

@@ -8,14 +8,22 @@ import matplotlib.pyplot as plt
 #import datetime
 
 #data = kairos.input.from_csv('../samples/training_input.min.csv')
+#data = kairos.input.from_csv('../samples/training_input.min.csv', '../samples/training_output.min.csv')
 
 data = kairos.input.release('../samples/thomas.min.krf')
 
-myRegression = kairos.engine.regressors.linearRegressor()
+myRegression = kairos.engine.regressors.linearRegressorSingle()
+myRegression.fitForce([5], [4])
 
-myRegression.fit([1,2,3,4,5], [-1,-2,-3,-4,-5])
+myRegression.fit(data.find(959))
 
-myRegression.predict([5,9,10])
+myRegression.predict([4])
+
+myRegression.freeze()
+
+data.find(959).get_allFeatures()
+
+data.find(99).get_targetValue()
 
 # Do my stuff
 
